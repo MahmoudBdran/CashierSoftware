@@ -1,0 +1,16 @@
+﻿<Window x:Class="CashierSoftware.SellScreenPackage.BillSearchInSellScreen.SellScreenBillSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CashierSoftware.SellScreenPackage.BillSearchInSellScreen"
+        mc:Ignorable="d"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        Loaded="Window_Loaded" Title="البحث عن فاتورة" Height="750" Width="1080" Left="0" Top="0" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <Border  Background="#eff2f7" CornerRadius="30" x:Name="SellBillSearchmainborder">
+    
+    </Border>
+</Window>

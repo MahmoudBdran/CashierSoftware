@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CashierSoftware.UserControls.MyMessageBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CashierSoftware.UserControls"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" Background="Transparent"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="250" >
+    <Border Background="#eff2f7" CornerRadius="20" >
+        <StackPanel Margin="20 10">
+            <Border CornerRadius="10">
+                <Grid>
+                    <Icon:PackIconMaterial x:Name="CloseIcon" Kind="CloseThick" Width="9" Height="9" Margin="0 0 0 0" Foreground="Gray" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                    
+
+                </Grid>
+            </Border>
+            <TextBlock Text="هل تريد حذف العنصر حقا!؟" Foreground="#97A5B0" FontSize="13" Margin="8 30 8 40" TextAlignment="Center"/>
+
+            <Grid >
+                <Button Width="80" Height="30" FontSize="13" Background="#4ec768" Style="{StaticResource addButton}" HorizontalAlignment="Left" Margin="0 0" >
+                    <StackPanel Orientation="Horizontal">
+
+                        <Icon:PackIconMaterial Kind="ArrowLeftBold" VerticalAlignment="Center" Width="11" Height="11" Margin="0 0 5 0"/>
+                        <TextBlock Text="نعم"/>
+                    </StackPanel>
+                </Button>
+                <Button Width="80" Height="30" FontSize="13" Background="#b71c1c" Style="{StaticResource addButton}" HorizontalAlignment="Right" Margin="0 0">
+                    <StackPanel Orientation="Horizontal">
+
+                        <Icon:PackIconMaterial Kind="Close" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                        <TextBlock Text="لأ"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+    </Border>
+</UserControl>

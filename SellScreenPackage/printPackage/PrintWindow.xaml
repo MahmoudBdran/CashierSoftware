@@ -1,0 +1,93 @@
+﻿<Window x:Class="CashierSoftware.SellScreenPackage.printPackage.PrintWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CashierSoftware.SellScreenPackage.printPackage"
+        mc:Ignorable="d"
+        Closed="Window_Closed"
+        Icon="{Icon:MaterialImage Kind=Printer, Brush=#FF62013C }" Title="Preview" Height="800" Width="535.5" ResizeMode="NoResize" WindowStyle="ThreeDBorderWindow" ShowInTaskbar="True"  FontFamily="Roboto" WindowStartupLocation="CenterScreen">
+    <ScrollViewer MouseDown="ScrollViewer_MouseDown">
+        <Grid >
+            <Button HorizontalAlignment="Left" Margin="10" Click="Button_Click" VerticalAlignment="Top" Background="#FF62013C" Width="50" Height="30">
+                <materialDesign:PackIcon Kind="Printer" Foreground="White"/>
+            </Button>
+            
+            <Grid x:Name="print">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="auto" MinHeight="150"/>
+                    <RowDefinition Height="auto" MinHeight="200"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0" HorizontalAlignment="Center">
+                    <Image Source="/Assets/pinterest_board_photo.png" Width="100" Height="100" VerticalAlignment="Center"/>
+                    <TextBlock Text="Fathalla Market" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
+                </StackPanel>
+                <DataGrid IsEnabled="False" Margin="-10 0 15 25" Grid.Row="1" Style ="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource PrintPageDataGridRowStyle}" x:Name="printedCategoriesDG" DataContext="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="الصنف" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding catName}"/>
+                        <DataGridTextColumn Header="السعر" IsReadOnly="True" CanUserResize="False" Width="SizeToHeader" Binding="{Binding catActualPrice}"/>
+                        <DataGridTextColumn Header="الخصومات" IsReadOnly="True" CanUserResize="False" Width="SizeToHeader" Binding="{Binding catDiscount}"/>
+                        <DataGridTextColumn Header="الكمية" IsReadOnly="False" CanUserResize="False" Width="SizeToHeader" Binding="{Binding quantity}" />
+                        <DataGridTextColumn Header="القيمة" IsReadOnly="False" CanUserResize="False" Width="SizeToHeader" Binding="{Binding result}" />
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="2" Margin="20 0">
+                    <Grid Margin="10 20 10 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="عدد الأصناف" Grid.Column="0" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0 0 10 0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <TextBlock Text="المدفوع" Grid.Column="1" FontSize="12"  FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="الخصومات" Grid.Column="2" FontSize="12"  FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="القيمة المستحقة" Grid.Column="3" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="الباقى" Grid.Column="4" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0 0 10 0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding total_quantity}" x:Name="total_quantity_tb" Grid.Column="0" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0 0 10 0" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center"/>
+                        <TextBlock Text="{Binding customer_pay}" x:Name="customer_pay_tb" Grid.Column="1" FontSize="12"  FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding total_discount}"  x:Name="total_discount_tb" Grid.Column="2" FontSize="12"  FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding final_price}"  x:Name="final_price_tb" Grid.Column="3" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding rest}" x:Name="rest_tb" Grid.Column="4" FontSize="12" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="-10 0 10 0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Margin="5 0 5 0" Opacity="0.5"/>
+
+                    <Grid Margin="0 2" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding date}" x:Name="date_tb" VerticalAlignment="Center" Margin="0 3" FontSize="14" FontWeight="Normal" Foreground="Gray"/>
+                            </StackPanel>
+
+                    </Grid>
+                    <Rectangle Fill="Black" Height="1" Margin="5 0 5 0" Opacity="0.5"/>
+
+                    <Grid Margin="0 2" HorizontalAlignment="Stretch" TextBlock.TextAlignment="Center">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="{Binding}" x:Name="barcode" Height="40" Width="200" Stretch="Fill"/>
+
+                            <TextBlock Text="{Binding billNumber}" x:Name="billNumber_tb" VerticalAlignment="Center" FontSize="14" FontStretch="UltraExpanded"  Margin="0 2" FontWeight="Normal" Foreground="Gray"/>
+                            
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

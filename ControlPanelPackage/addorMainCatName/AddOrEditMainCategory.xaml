@@ -1,0 +1,110 @@
+﻿<Window x:Class="CashierSoftware.ControlPanelPackage.addorMainCatName.AddOrEditMainCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CashierSoftware.ControlPanelPackage.addorMainCatName"
+        xmlns:uc="clr-namespace:CashierSoftware.ControlPanelPackage.AddOrEditCatUserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        WindowStyle="None"
+        Background="Transparent"
+        Loaded="Window_Loaded"
+        AllowsTransparency="True" 
+        
+        mc:Ignorable="d"
+        Title="AddOrEditMainCategory" Height="450" Width="600">
+    <Border Background="Transparent" CornerRadius="30" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid>
+            <!--Background Layers-->
+            <!--Main Layer-->
+            <Border CornerRadius="7" Background="#ffffff">
+                <Border.Effect>
+                    <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+                </Border.Effect>
+
+                <Grid Margin="20 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Border Grid.Row="0"  Margin="0 0 -20 5" CornerRadius="10">
+                        <Grid>
+
+                            <Button x:Name="close_btn" Click="close_btn_Click" Style="{StaticResource windowCloseButton}" Margin="0 10 20 0" HorizontalAlignment="Right">
+                                <Icon:PackIconMaterial Kind="CloseThick" Width="11" Height="11" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Button>
+                            <TextBlock  Grid.Row="0" Grid.Column="0" Margin="10 10" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False" HorizontalAlignment="Left" FontSize="17" Text="Edit Main Categories" x:Name="editpage_tblock" />
+
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="1"  Margin="0 0 20 5" CornerRadius="10">
+                        <Grid>
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <uc:MyTextBox Grid.Row="1" Caption="الاسم الجديد " x:Name="NewMainCattb" HorizontalAlignment="Left" Width="400" TextBoxBase.TextChanged="NewMainCattb_TextChanged"/>
+                                <Button Style="{StaticResource addButton}" HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0 25 0 0" Click="SaveMainCatNewNameBtn_Click" x:Name="SaveMainCatNewNameBtn">
+                                    <StackPanel Orientation="Horizontal" >
+
+                                        <Icon:PackIconMaterial Kind="Update" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                                        <TextBlock Text="حفظ"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+
+                    <!--Inputs-->
+                   
+                    
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <!-- يتم تعديل auto عند تكملة تعديل البرمجة لهذة الصفحة-->
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid Style ="{DynamicResource DataGridStyle1}" Margin="0" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Column="0" x:Name="MainCatDG" DataContext="{Binding}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="اسم الفئة" IsReadOnly="False" CanUserResize="False" Width="*" Binding="{Binding MainCatName}" />
+                                <DataGridTemplateColumn Header="تعديل" IsReadOnly="True" Width="*" CanUserResize="False" x:Name="modifyColumn" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button x:Name="btn_grid_edit" Style="{StaticResource gridEditButton}" Click="btn_grid_edit_Click" >
+                                                    <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}" />
+                                                </Button>
+                                                <Button Style="{StaticResource gridRemoveButton}" Margin="5 0 0 0" x:Name="deleteRow_btn" Click="deleteRow_btn_Click_1">
+                                                    <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel Grid.Column="1" Orientation="Vertical" Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <uc:MyTextBox Grid.Column="1" Caption="id" x:Name="id_tb" HorizontalAlignment="Left" Width="70" IsEnabled="False"/>
+                                <uc:MyTextBox Grid.Column="1" Caption="الاسم الجديد " x:Name="EditMainCattb" HorizontalAlignment="Right" Width="200"  LostFocus="EditMainCattb_LostFocus"/>
+                                
+                            </StackPanel>
+                            <Button Grid.Column="1" Style="{StaticResource addButton}" HorizontalAlignment="Center" Width="240" Click="EditMainCatNameBtn_Click" x:Name="EditMainCatNameBtn">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Icon:PackIconMaterial Kind="Update" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                                    <TextBlock Text="تعديل"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
