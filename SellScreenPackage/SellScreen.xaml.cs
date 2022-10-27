@@ -22,11 +22,10 @@ using System.Globalization;
 using System.Drawing;
 using Color = System.Drawing.Color;
 using MaterialDesignColors;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+//using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using CashierSoftware.SellScreenPackage.printPackage;
 using IronBarCode;
 using System.IO;
-using SixLabors.ImageSharp.Drawing;
 using System.Windows.Interop;
 using System.Windows.Markup;
 using System.Threading;
@@ -71,9 +70,7 @@ namespace CashierSoftware.SellScreenPackage
             mainborder.Focusable = true;
             //  this.corewin
 
-            var MyBarCode = IronBarCode.BarcodeWriter.CreateBarcode("https://ironsoftware.com/csharp/barcode", BarcodeEncoding.Code128);
-            
-        }
+               }
         Notifier notifier = new Notifier(cfg =>
         {
             cfg.PositionProvider = new WindowPositionProvider(

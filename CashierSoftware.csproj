@@ -2,10 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-	<TargetFramework>net6.0-windows</TargetFramework>
+	<TargetFramework>net5.0-windows10.0.17763.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\Debug\net6.0-windows\**" />
+    <EmbeddedResource Remove="bin\Debug\net6.0-windows\**" />
+    <None Remove="bin\Debug\net6.0-windows\**" />
+    <Page Remove="bin\Debug\net6.0-windows\**" />
+  </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\pinterest_board_photo.png" />
     <None Remove="Images\close.png" />
@@ -29,7 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BarCode" Version="2022.9.8982" />
     <PackageReference Include="BarcodeLib" Version="2.4.0" />
     <PackageReference Include="DotNetProjects.WpfToolkit.Input" Version="6.1.94" />
     <PackageReference Include="FontAwesome" Version="4.7.0" />
@@ -52,6 +58,9 @@
     </Reference>
     <Reference Include="DotNetProjects.Input.Toolkit">
       <HintPath>C:\Users\utd\Downloads\DotNetProjects.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="IronBarCode">
+      <HintPath>..\..\programs\Softprober.com_IronBarCode_4.0.2.2\IronBarCode 4.0.2.2\IronBarCode.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -89,7 +98,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\net6.0-windows\" />
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
 
 </Project>

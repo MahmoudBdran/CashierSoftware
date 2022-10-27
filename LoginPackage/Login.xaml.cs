@@ -140,9 +140,9 @@ namespace CashierSoftware.LoginPackage
                                 //password_tb.Password = "";
 
                             }
-                            catch
+                            catch(Exception ex)
                             {
-
+                                MessageBox.Show(ex.Message);
                             }
                             
 
